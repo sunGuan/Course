@@ -18,6 +18,8 @@ create database if not exists niit
 character set utf8
 collate utf8_general_ci;
 
+use niit;
+
 如果数据库表stu不存在，则创建stu表，数据库引擎为innodb，表中字段信息为：
 rollno 学号列 主键列 自动增长
 stu_name 非空
@@ -59,7 +61,7 @@ where TABLE_NAME = 'marks';
 alter table marks add column score int;
 alter table marks add constraint pk_mark_id primary key(mark_id);
 alter table marks 
-add constraint fk_stu foreign key(stu_id) references stu(stu_id);
+add constraint fk_stu foreign key(stu_id) references stu(rollno);
 alter table marks 
 add constraint fk_course foreign key(course_id) references course(course_id);
 
